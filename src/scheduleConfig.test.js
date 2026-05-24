@@ -63,4 +63,10 @@ describe('loadScheduleConfig', () => {
     }]);
     expect(wrap).toHaveBeenCalledWith('opts-job', handler, { retries: 3 });
   });
+
+  test('returns empty array for empty definitions list', () => {
+    const jobs = loadScheduleConfig([]);
+    expect(jobs).toHaveLength(0);
+    expect(listScheduledJobs()).toHaveLength(0);
+  });
 });
